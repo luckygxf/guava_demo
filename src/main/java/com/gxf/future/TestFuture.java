@@ -18,6 +18,7 @@ public class TestFuture {
     Future<Boolean> booleanTask = service.submit(new Callable<Boolean>() {
       @Override
       public Boolean call() throws Exception {
+        Thread.sleep(1000500);
         return true;
       }
     });
@@ -25,7 +26,7 @@ public class TestFuture {
     while (true) {
       if (booleanTask.isDone() && !booleanTask.isCancelled()) {
         //模拟耗时
-        Thread.sleep(500);
+        Thread.sleep(1000500);
         Boolean result = booleanTask.get();
         System.err.println("BooleanTask: " + result);
         break;
